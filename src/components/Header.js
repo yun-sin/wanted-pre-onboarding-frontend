@@ -22,13 +22,13 @@ const HeaderContainer = styled.header`
   }
   .signWrap {
     position: absolute;
-    right: 30px;
+    right: 20px;
     font-size: 16px;
     line-height: 30px;
 
     a {
       &:first-of-type {
-        margin-right: 30px;
+        margin-right: 20px;
       }
     }
   }
