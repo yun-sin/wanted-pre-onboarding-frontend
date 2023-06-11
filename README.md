@@ -11,12 +11,10 @@
 <br>
 
 ### 기술 스택
- 
-> #### Development
-> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
->
-> #### Deploy
-> <img src="https://img.shields.io/badge/netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=black">
+
+|Development|Deploy|
+|:-:|:-:|
+|<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">|<img src="https://img.shields.io/badge/netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=black">|
 
 <br>
 
