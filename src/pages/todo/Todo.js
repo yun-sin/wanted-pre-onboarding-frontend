@@ -1,7 +1,6 @@
-import React, { memo, useEffect, useState, useCallback, useRef } from "react";
-import styled from "styled-components";
+import React, { memo, useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import { TodoContainer } from "../../styles/TodoStyle";
 

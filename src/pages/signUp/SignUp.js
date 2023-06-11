@@ -1,5 +1,4 @@
-import React, { memo, useEffect, useState, useCallback, useRef } from "react";
-import styled from "styled-components";
+import React, { memo, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Navigate } from "react-router-dom";
 
