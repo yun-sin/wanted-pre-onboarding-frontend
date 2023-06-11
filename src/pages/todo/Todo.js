@@ -1,82 +1,31 @@
 import React, { memo, useEffect, useState, useCallback, useRef } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import axios from "axios";
 import { useNavigate, Navigate } from "react-router-dom";
 
-const TodoContainer = styled.div`
-  width: 100%;
-
-  .middle {
-    width: 300px;
-    margin: auto;
-
-    h2 {
-      text-align: center;
-    }
-
-    .add {
-      display: flex;
-      height: 30px;
-      margin-bottom: 30px;
-      input {
-        width: 200px;
-        padding: 0;
-        box-sizing: border-box;
-        height: 100%;
-      }
-      button {
-        width: 100px;
-        padding: 0;
-        height: 100%;
-        box-sizing: border-box;
-      }
-    }
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    li {
-      display: flex;
-      justify-content: space-between;
-      height: 30px;
-      margin-bottom: 10px;
-
-      .input {
-        width: 200px;
-        padding: 0;
-        box-sizing: border-box;
-        height: 100%;
-      }
-
-      .btn {
-        button {
-          width: 50px;
-          height: 30px;
-        }
-      }
-    }
-  }
-`;
+import { TodoContainer } from "../../styles/TodoStyle";
 
 const Todo = memo(() => {
-  const [localData, setLocalData] = useState();
+  const [noLocalData, setNoLocalData] = useState(false);
   const [token, setToken] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [editingId, setEditingId] = useState();
   const [editingText, setEditingText] = useState("");
 
   /**
-   * Assignment 4
-   * 처음엔 false, 로컬데이터가 없으면 true (로그인 페이지로 리다이렉트)
+   * Assignment 4 - 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
+   * 로컬스토리지에 로그인 데이터가 없을 경우 로그인 페이지로 리다이렉트
+   *
+   * Assignment 5 - /todo경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
    */
   useEffect(() => {
     if (!localStorage.getItem("loginEmail")) {
-      setLocalData("로그인필요");
+      setNoLocalData(true);
+      alert("로그인이 필요합니다.");
+    } else {
+      setToken(localStorage.getItem("access_token"));
+      getTodos(localStorage.getItem("access_token"));
     }
-
-    setToken(localStorage.getItem("access_token"));
-    getTodos(localStorage.getItem("access_token"));
   }, []);
 
   const onNewTodoSubmit = (e) => {
@@ -157,7 +106,7 @@ const Todo = memo(() => {
   };
 
   /**
-   * Assignment 7
+   * Assignment 7 - TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
    */
   const onCompletedChange = useCallback((e) => {
     console.log(e.target.dataset.id);
@@ -187,7 +136,7 @@ const Todo = memo(() => {
   };
 
   /**
-   * Assignment 9
+   * Assignment 9 - 투두 리스트의 삭제 기능을 구현해주세요
    */
   const onDeleteTodo = useCallback((e) => {
     console.log(e.target.dataset.id);
@@ -195,7 +144,7 @@ const Todo = memo(() => {
   });
 
   /**
-   * Assignment 10
+   * Assignment 10 - 투두 리스트의 수정 기능을 구현해주세요
    */
   // input 태그의 텍스트가 변경될때 실행
   const onTextChange = useCallback((e) => {
@@ -239,8 +188,8 @@ const Todo = memo(() => {
   }, [todoList]);
   return (
     <TodoContainer>
-      {/* Assignment 4 */}
-      {localData && <Navigate to="/signin" replace={true} />}
+      {/* Assignment 4 - 로그인 여부에 따른 리다이렉트 처리를 구현해주세요 */}
+      {noLocalData && <Navigate to="/signin" replace={true} />}
       <div className="middle">
         <h2>투두 리스트</h2>
 

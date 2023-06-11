@@ -1,48 +1,11 @@
 import React, { memo, useEffect, useState, useCallback, useRef } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import axios from "axios";
 import { useNavigate, Navigate } from "react-router-dom";
 
-const SingupContainer = styled.div`
-  width: 100%;
+import { SignFormContainer } from "../../styles/SignForm";
 
-  h2 {
-    text-align: center;
-  }
-
-  form {
-    width: 200px;
-    margin: auto;
-
-    ul {
-      list-style: none;
-      padding: 0;
-      display: block;
-      margin: auto;
-
-      li {
-        label {
-          display: block;
-          width: 100px;
-          margin-bottom: 5px;
-        }
-        input {
-          width: 200px;
-          height: 30px;
-          box-sizing: border-box;
-          margin-bottom: 20px;
-        }
-
-        button {
-          width: 200px;
-          height: 50px;
-        }
-      }
-    }
-  }
-`;
-
-const Signup = memo(() => {
+const SignIn = memo(() => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -51,7 +14,7 @@ const Signup = memo(() => {
   const navigate = useNavigate();
 
   /**
-   * Assignment 4
+   * Assignment 4 - 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
    */
   useEffect(() => {
     setLocalData(localStorage.getItem("loginEmail"));
@@ -61,7 +24,7 @@ const Signup = memo(() => {
     console.log(password);
 
     /**
-     * Assignment 1
+     *  Assignment 1 - 이메일과 비밀번호의 유효성 검사기능을 구현해주세요
      */
     if (/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email) && password.length >= 8) {
       setDisabled(false);
@@ -70,19 +33,20 @@ const Signup = memo(() => {
     }
   }, [email, password]);
 
-  const onSingupSubmit = (e) => {
+  const onSinginSubmit = (e) => {
     e.preventDefault();
 
     console.log("이메일: " + e.target.email.value + " | 패스워드: " + e.target.password.value);
 
-    postSignUp(e.target.email.value, e.target.password.value);
+    postSignIn(e.target.email.value, e.target.password.value);
   };
 
   /**
-   * Assignment 2
+   * Assignment 3 - 로그인 페이지에서 버튼을 클릭 시, 로그인을 진행하고
+   * 로그인이 정상적으로 완료되었을 시 /todo 경로로 이동해주세요
    */
-  const postSignUp = async (em, pw) => {
-    const URL = "https://www.pre-onboarding-selection-task.shop/auth/signup";
+  const postSignIn = async (em, pw) => {
+    const URL = "https://www.pre-onboarding-selection-task.shop/auth/signin";
 
     try {
       const res = await axios
@@ -97,25 +61,25 @@ const Signup = memo(() => {
         )
         .then((e) => {
           console.log(e);
-          alert("회원가입 성공!");
-          navigate("/signin");
+          localStorage.setItem("loginEmail", em);
+          localStorage.setItem("access_token", e.data.access_token);
+          alert("로그인 성공!");
+          navigate("/todo");
         });
     } catch (error) {
       console.error(error.response);
-      if (error.response.status == 400) {
-        alert("이메일 주소를 확인해 주세요");
-      }
+      alert(error.response?.data.message);
     }
   };
 
   return (
-    <SingupContainer>
-      {/* Assignment 4 */}
+    <SignFormContainer>
+      {/* Assignment 4 - 로그인 여부에 따른 리다이렉트 처리를 구현해주세요 */}
       {localData && <Navigate to="/todo" replace={true} />}
 
-      <h2>회원가입</h2>
+      <h2>로그인</h2>
 
-      <form id="signupForm" onSubmit={onSingupSubmit}>
+      <form id="signinForm" onSubmit={onSinginSubmit}>
         <ul>
           <li>
             <label htmlFor="email">이메일</label>
@@ -144,14 +108,14 @@ const Signup = memo(() => {
             />
           </li>
           <li>
-            <button data-testid="signup-button" disabled={disabled}>
-              회원가입
+            <button data-testid="signin-button" disabled={disabled}>
+              로그인
             </button>
           </li>
         </ul>
       </form>
-    </SingupContainer>
+    </SignFormContainer>
   );
 });
 
-export default Signup;
+export default SignIn;
