@@ -8,7 +8,6 @@
 </div>
 
 <br>
-<br>
 
 ## 지원자 : 장윤신
 
@@ -16,73 +15,48 @@
 
 ## 사용 라이브러리
  - styled-components
+
+   - styled-reset 
+  
  - react-router-dom
- - axios
-
-<br>
-
-
  
+ - axios
 
 <br>
 
 ## 프로젝트의 실행 방법 
 
- - git clone 후, `npm install & npm start` 또는 https://yun-sin.github.io/
+ - 배포 링크
+
+     https://sprightly-meerkat-3bb738.netlify.app
+     
+ - 테스트 계정
+
+     |ID|PW|
+     |:---:|:---:|
+     |`jason@gmail.com`|`a123456789`|
 
 <br>
 
 ## 스크린샷
 
-|/signin|/signup|/todo|
+|/signup|/signin|/todo|
 |:---:|:---:|:---:|
-|![image](https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/ea149b67-6d37-4817-9d3f-b552a090ddc3)|![image](https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/54533011-befb-491a-9103-689ee17c149d)|![image](https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/5c63f8d3-828c-4dd9-8795-f95ba448f0ab)|
-
-
-<br>
-
-## 데모 영상 
-
-- 회원가입
-
-https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/9c4ea7c6-8d82-4cfb-89cd-19a99e57005c
+|![image](https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/633d0039-fcc7-416c-908d-84f7f739cf2a)|![image](https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/147f7d04-0b59-4619-80b6-a69db48e62f7)|![image](https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/6d454c27-756e-439f-9809-ac11ccea2542)|
 
 <br>
 
-- 로그인
+## 문제해결
 
-https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/7b9a0b37-1dd8-492a-a9dc-5a1a1e680245
-
-<br>
-
-- 투두
-
-https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/1f9a3ca7-417c-498b-881e-a9acbb172926
-
-<br>
-
-- 투두 새로고침
-
-https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/625b0b2d-e24d-47b6-91ef-6af6212ae80d
-
-<br>
-
-- 로그인 여부에 따른 리다이렉트 처리
-
-https://github.com/yun-sin/wanted-pre-onboarding-frontend/assets/99275134/61895a51-a082-4862-b468-6acde46becaf
-
-
-<hr/>
-<br>
-<br>
-
-## 문제점
-
- - 배포 링크 문제점 
-   - 새로고침하면 404 에러 페이지 표출
+ - 문제점
+   - gh-pages를 이용하여 배포 후 새로고침하면 404 에러 페이지 표출
    - "/" URL이 아닌 "/signup"등의 경로로 바로 접속할 경우 404 에러 페이지 표출 등
    - gh-pages는 SPA를 지원하지 않기 때문에 생긴 문제로 추정
-
+ 
+ - 해결
+   - netlify를 이용하여 배포
+   - public폴더에 `-redirects` 파일을 추가 
+   - 참고 : [[React] 리액트 프로젝트 Netlify에 배포했을 때 새로고침시 NotFound](https://13akstjq.github.io/react/2019/09/01/React-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-Netlify%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%96%88%EC%9D%84%EB%95%8C-NotFound-%EC%9D%B4%EC%8A%88-%ED%95%B4%EA%B2%B0.html)
 
 
 
