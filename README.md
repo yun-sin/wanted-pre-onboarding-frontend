@@ -6,11 +6,11 @@
 
 <br>
 
-### 지원자 : 장윤신
+## 지원자 : 장윤신
 
 <br>
 
-### 기술 스택
+## 기술 스택
 
 |Development|Deploy|
 |:-:|:-:|
@@ -18,7 +18,7 @@
 
 <br>
 
-### 사용 라이브러리
+## 사용 라이브러리
  - styled-components
    - styled-reset 
  - react-router-dom
@@ -26,7 +26,7 @@
 
 <br>
 
-### 프로젝트의 실행 방법 
+## 프로젝트의 실행 방법 
 
 - [배포 링크](https://sprightly-meerkat-3bb738.netlify.app)
 - 테스트 계정
